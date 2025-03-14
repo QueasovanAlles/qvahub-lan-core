@@ -1,6 +1,6 @@
 {
   "name": "qvahub-lan-core",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "QvAHub LAN Core - Client webRTC operations",
   "keywords": [
     "qvahub",

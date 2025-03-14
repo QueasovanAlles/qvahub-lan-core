@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter,Injectable} from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { QvaLoggerService} from './qva-logger.service';
 
@@ -22,10 +22,13 @@ export interface WSClient {
 }
 
 interface MessageHandlers {
-    [key: string]: ((data: any) => void) | QvahubLanClient;
+    [key: string]: ((data: any) => void) | QvaHubLanClient;
 }
 
-export class QvahubLanClient {
+@Injectable({
+  providedIn: 'root'
+})
+export class QvaHubLanClient {
 
     private ws: WebSocket | null = null;
 	private logging : boolean = false;

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class QvahubLocalhostService {
+export class QvaHubLocalhostService {
 
     private IPv4 : string = '127.0.0.1';
 	private port : number = 52330;

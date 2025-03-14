@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { QvaLoggerService } from './qva-logger.service';
-import { QvahubLocalhostService } from './qvahub-localhost.service';
+import { QvaHubLocalhostService } from './qva-hub-localhost.service';
+import { QvaHubLanHost } from './qva-hub-lan-host';
 
 @NgModule({
   declarations: [],
@@ -8,7 +9,8 @@ import { QvahubLocalhostService } from './qvahub-localhost.service';
   exports: [],
   providers: [
     QvaLoggerService,
-    QvahubLocalhostService
+    QvaHubLocalhostService,
+    QvaHubLanHost
   ]
 })
-export class QvahubLanCoreModule { }
+export class QvaHubLanCoreModule { }

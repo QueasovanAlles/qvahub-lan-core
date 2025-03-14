@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.QvahubLanPeer = void 0;
 const core_1 = require("@angular/core");
 const qvahub_lan_types_1 = require("./qvahub-lan-types");
-class QvahubLanPeer {
+class QvaHubLanPeer {
     constructor(log) {
         this.connection = null;
         this.ws = null;

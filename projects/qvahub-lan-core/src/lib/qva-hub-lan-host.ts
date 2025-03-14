@@ -1,14 +1,25 @@
-import { EventEmitter } from '@angular/core';
-import { QvaHubLanClientType, QvaHubLanWebRTCType, QvaHubLanWebRTCClient } from './qvahub-lan-types';
+import { EventEmitter, Injectable } from '@angular/core';
+import { QvaHubLanClientType, QvaHubLanWebRTCType, QvaHubLanWebRTCClient } from './qva-hub-lan-types';
 import { QvaLoggerService} from './qva-logger.service';
 
-export class QvahubLanHost {
+@Injectable({
+  providedIn: 'root'
+})
+export class QvaHubLanHost {
+
     private peerConnections = new Map<string, RTCPeerConnection>();
     private ws: WebSocket | null = null;
     private clientId: string = '';
 
 	private clientType : QvaHubLanClientType | null = null;
     private log : QvaLoggerService;
+
+    private streamEmitter = new EventEmitter<MediaStream>();
+
+    getStream(clientId: string) {
+        return this.streamEmitter.asObservable();
+    }
+
 	constructor(log: QvaLoggerService) {
 		this.log = log;
 	}
@@ -107,6 +118,12 @@ export class QvahubLanHost {
 					hostId: this.clientId
 				}));
 			});
+
+		peerConnection.ontrack = (event:any) => {
+			this.log.log('Received track:', event.track.kind, this.toString());
+            this.streamEmitter.emit(event.streams[0]);
+		};
+
 	}
 
 	private handleCandidate(candidate: RTCIceCandidate, peerId: string) {
