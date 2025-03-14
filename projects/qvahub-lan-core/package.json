@@ -1,0 +1,22 @@
+{
+  "name": "qvahub-lan-core",
+  "version": "1.0.0",
+  "description": "QvAHub LAN Core - Client webRTC operations",
+  "keywords": [
+    "qvahub",
+    "lan",
+    "webrtc",
+    "client"
+  ],
+  "author": "queasovanalles",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^16.0.0",
+    "@angular/core": "^16.0.0",
+    "rxjs": "~7.8.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
