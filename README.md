@@ -28,25 +28,31 @@ import { QvahubLanClient } from 'qvahub-lan-core';
 const client = new QvahubLanClient();
 
 // Connect to hub
-client.connect('192.168.1.2', 52330, 'MyClient', 'viewer');
+client.connect('192.168.1.2', 52330, 'clientType', 'clientName');
+```
+
+There is a hardcoded preset off clientTypes. The separation of this list is a todo :
+in qvahub-lan-types.ts
+
+```typescript
+export enum QvaHubLanClientType {
+    QvAACAM = 'QvAACAM',
+    QvABroVi = 'QvABroVi',
+    MyLoReFIO = 'MyLoReFIO',
+    QvAVIHUB = 'QvAVIHUB'
+}
+
+export enum QvaHubLanWebRTCType {
+    BROADCAST = 'broadcast',              // One-to-many streaming - unimplemented yet
+    HOST = 'host',                        // Multiple P2P connections (like FIO)
+    PEER = 'peer'                         // Single connection peer
+}
 ```
 
 ## Development
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 
-### Building
-Run `ng build qvahub-lan-core` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-### Publishing
-After building, run:
-```bash
-cd dist/qvahub-lan-core
-npm publish
-```
-
-### Testing
-Run `ng test qvahub-lan-core` to execute the unit tests via Karma.
 
 ## Community
 Join our Google Group: queaso-van-alles@googlegroups.com
